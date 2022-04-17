@@ -2,7 +2,7 @@
  A better way to make a C++ Discord bot, Asuna will be met Kirito soon :>
 
 ## Attention
-- This respiratory is under-construction! I'll update it as soon as possible :><br />
+- This respiratory is under-construction! I'll update it as soon as possible :>
 - It's not too good to code a Discord Bot using C++ language, but I hope I can develop a multipurpose bot one like the way I do in JavaScript (no I don't pretty like JS at all :<)
  
  ### Support me
