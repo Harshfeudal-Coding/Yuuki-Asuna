@@ -12,7 +12,7 @@ int main()
 
 	const dpp::snowflake GUILD_ID = 874245742888366150;
 
-	dpp::cluster bot(config["token"], dpp::i_default_intents);
+	dpp::cluster bot(config["token"], dpp::i_all_intents);
 	bot.on_ready([&bot](const dpp::ready_t& event)
 		{
 			std::cout << "[Link started!] Login as " << bot.me.username << std::endl;
