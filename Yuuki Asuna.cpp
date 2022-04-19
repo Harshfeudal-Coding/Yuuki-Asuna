@@ -1,4 +1,6 @@
-#include "include.h"
+#include <dpp/dpp.h>
+#include <dpp/nlohmann/json.hpp>
+
 #include "commands/commands.h"
 
 using json = nlohmann::json;
