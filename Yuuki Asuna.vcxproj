@@ -147,7 +147,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="commands\commands.h" />
-    <ClInclude Include="commands\ping.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitattributes" />
