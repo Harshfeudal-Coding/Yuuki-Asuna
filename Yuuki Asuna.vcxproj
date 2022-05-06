@@ -146,9 +146,6 @@
     <ClCompile Include="Yuuki Asuna.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="commands\commands.h" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include=".gitattributes" />
     <None Include=".gitignore" />
     <None Include="config.json" />
