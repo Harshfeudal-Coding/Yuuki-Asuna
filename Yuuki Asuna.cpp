@@ -25,6 +25,7 @@ int main()
 		client.set_presence(dpp::presence(dpp::ps_dnd, dpp::at_watching, "Sword Art Online"));
 	});
 
+	// Starting the bot
 	client.start(false);
 	return 0;
 }
