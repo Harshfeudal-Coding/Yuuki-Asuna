@@ -1,8 +1,8 @@
-//	Internal include
+// Internal include
 #include <iostream>
 #include <fstream>
 
-//	External include
+// External include
 #include <dpp/dpp.h>
 #include <dpp/nlohmann/json.hpp>
 
@@ -10,12 +10,12 @@ using json = nlohmann::json;
 
 int main()
 {
-	//	Reading JSON file
+	// Reading JSON file
 	json reader;
 	std::ifstream reading("./config.json", std::ifstream::binary);
 	reading >> reader;
 
-	//	Constant
+	// Constant
 	const auto &token = reader["token"];
 	const auto &guild_id = reader["guild_id"];
 
