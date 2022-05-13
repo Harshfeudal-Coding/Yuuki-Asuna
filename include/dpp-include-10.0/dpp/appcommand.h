@@ -89,6 +89,7 @@ typedef std::variant<std::monostate, std::string, int64_t, bool, snowflake, doub
 struct DPP_EXPORT command_option_choice : public json_interface<command_option_choice>  {
 	std::string name;	//!< Option name (1-32 chars)
 	command_value value;	//!< Option value
+	std::map<std::string, std::string> name_localizations; //!< Localisations of command option name
 
 	/**
 	 * @brief Construct a new command option choice object
@@ -96,6 +97,15 @@ struct DPP_EXPORT command_option_choice : public json_interface<command_option_c
 	command_option_choice() = default;
 
 	virtual ~command_option_choice() = default;
+
+	/**
+	 * @brief Add a localisation for this command option choice
+	 * @see https://discord.com/developers/docs/reference#locales
+	 * @param language Name of language, see the list of locales linked to above.
+	 * @param _name name of command option choice in the specified language
+	 * @return command_option_choice& reference to self for fluent chaining
+	 */
+	command_option_choice& add_localization(const std::string& language, const std::string& _name);
 
 	/**
 	 * @brief Construct a new command option choice object
@@ -150,13 +160,29 @@ struct DPP_EXPORT command_option : public json_interface<command_option>  {
 	std::vector<channel_type> channel_types;     //!< Allowed channel types for channel snowflake id options
 	command_option_range min_value;              //!< Minimum value allowed, for co_number and co_integer types only
 	command_option_range max_value;              //!< Maximum value allowed, for co_number and co_integer types only
+	std::map<std::string, std::string> name_localizations; //!< Localisations of command name
+	std::map<std::string, std::string> description_localizations; //!< Localisations of command description
+
 
 	/**
 	 * @brief Construct a new command option object
 	 */
 	command_option() = default;
 
+	/**
+	 * @brief Destroy the command option object
+	 */
 	virtual ~command_option() = default;
+
+	/**
+	 * @brief Add a localisation for this slash command option
+	 * @see https://discord.com/developers/docs/reference#locales
+	 * @param language Name of language, see the list of locales linked to above.
+	 * @param _name name of slash command option in the specified language
+	 * @param _description description of slash command option in the specified language
+	 * @return command_option& reference to self for fluent chaining
+	 */
+	command_option& add_localization(const std::string& language, const std::string& _name, const std::string& _description);
 
 	/**
 	 * @brief Construct a new command option object
@@ -807,7 +833,9 @@ public:
 	std::vector<command_option> options;
 
 	/**
-	 * @brief whether the command is enabled by default when the app is added to a guild
+	 * @brief whether the command is enabled by default when the app is added to a guild.
+	 * This has no effect as the default_member_permissions value is used instead.
+	 * @deprecated Discord discourage use of this value and instead you should use default_member_permissions.
 	 */
 	bool default_permission;
 
@@ -820,6 +848,29 @@ public:
 	 * @brief autoincrementing version identifier updated during substantial record changes
 	 */
 	snowflake version;
+
+	/**
+	 * @brief Localisations of command name
+	 */
+	std::map<std::string, std::string> name_localizations;
+
+	/**
+	 * @brief Localisations of command description
+	 */
+	std::map<std::string, std::string> description_localizations;
+
+	/**
+	 * @brief The default permissions of this command on a guild.
+	 * D++ defaults this to p_use_application_commands.
+	 */
+	uint64_t default_member_permissions;
+
+	/**
+	 * @brief True if this command should be allowed in a DM
+	 * D++ defaults this to false. Cannot be set to true in a guild
+	 * command, only a global command.
+	 */
+	bool dm_permission;
 
 	/**
 	 * @brief Construct a new slashcommand object
@@ -839,6 +890,33 @@ public:
 	 * @brief Destroy the slashcommand object
 	 */
 	virtual ~slashcommand();
+
+	/**
+	 * @brief Add a localisation for this slash command
+	 * @see https://discord.com/developers/docs/reference#locales
+	 * @param language Name of language, see the list of locales linked to above.
+	 * @param _name name of slash command in the specified language
+	 * @param _description description of slash command in the specified language
+	 * @return slashcommand& reference to self for fluent chaining
+	 */
+	slashcommand& add_localization(const std::string& language, const std::string& _name, const std::string& _description);
+
+	/**
+	 * @brief Set the dm permission for the command
+	 * 
+	 * @param dm true to allow this command in dms
+	 * @return slashcommand& reference to self
+	 */
+	slashcommand& set_dm_permission(bool dm);
+
+	/**
+	 * @brief Set the default permissions of the slash command,
+	 * this is a permission bitmask.
+	 * 
+	 * @param defaults default permissions to set
+	 * @return slashcommand& reference to self
+	 */
+	slashcommand& set_default_permissions(uint64_t defaults);
 
 	/**
 	 * @brief Add an option (parameter)
