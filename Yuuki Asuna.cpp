@@ -5,6 +5,7 @@
 // External include
 #include <dpp/dpp.h>
 #include <dpp/nlohmann/json.hpp>
+#include <dpp/fmt/core.h>
 
 using json = nlohmann::json;
 
@@ -19,12 +20,15 @@ int main()
 	const auto &token = reader["token"];
 	const auto &guild_id = reader["guild_id"];
 
+	// Token access
 	dpp::cluster client(token);
+
+	// Bot ready
 	client.on_ready([&client](const dpp::ready_t& event) {
-		std::cout << "[Link started!] Log in as Yuuki Asuna." << std::endl;
+		fmt::print("Log in as {}.\n", client.me.format_username());
 		client.set_presence(dpp::presence(dpp::ps_dnd, dpp::at_watching, "Sword Art Online"));
 	});
-
+	
 	// Starting the bot
 	client.start(false);
 	return 0;

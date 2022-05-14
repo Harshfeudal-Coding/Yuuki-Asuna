@@ -861,6 +861,24 @@ public:
 	event_router_t<select_click_t> on_select_click;
 
 	/**
+	 * @brief Called when a user right-clicks or long-presses on a message,
+	 * where a slash command is bound to the ctxm_message command type.
+	 *
+	 * @note Use operator() to attach a lambda to this event, and the detach method to detach the listener using the returned ID.
+	 * The function signature for this event takes a single `const` reference of type select_click_t&, and returns void.
+	 */
+	event_router_t<message_context_menu_t> on_message_context_menu;
+
+	/**
+	 * @brief Called when a user right-clicks or long-presses on a user,
+	 * where a slash command is bound to the ctxm_user command type.
+	 *
+	 * @note Use operator() to attach a lambda to this event, and the detach method to detach the listener using the returned ID.
+	 * The function signature for this event takes a single `const` reference of type select_click_t&, and returns void.
+	 */
+	event_router_t<user_context_menu_t> on_user_context_menu;
+
+	/**
 	 * @brief Called when a modal dialog is submitted.
 	 * Form submits are triggered by discord when modal dialogs are submitted which you have
 	 * associated with a slash command using dpp::interaction_modal_response.
@@ -1410,6 +1428,15 @@ public:
 	 */
 	event_router_t<voice_receive_t> on_voice_receive;
 
+	/**
+	 * @brief Called when new audio data is received, combined and mixed for all speaking users.
+	 * 
+	 * @note Receiving audio for bots is not officially supported by discord.
+	 * 
+	 * @note Use operator() to attach a lambda to this event, and the detach method to detach the listener using the returned ID.
+	 * The function signature for this event takes a single `const` reference of type voice_receive_t&, and returns void.
+	 */
+	event_router_t<voice_receive_t> on_voice_receive_combined;
 	
 	/**
 	 * @brief Called when sending of audio passes over a track marker.
@@ -1515,11 +1542,58 @@ public:
 	void interaction_response_edit(const std::string &token, const message &m, command_completion_event_t callback = utility::log_error());
 
 	/**
+	 * @brief Create a followup message to a slash command
+	 * 
+	 * @param token Token for the interaction webhook
+	 * @param m followup message to create
+	 * @param callback Function to call when the API call completes.
+	 * On success the callback will contain a dpp::confirmation object in confirmation_callback_t::value. On failure, the value is undefined and confirmation_callback_t::is_error() method will return true. You can obtain full error details with confirmation_callback_t::get_error().
+	 */
+	void interaction_followup_create(const std::string &token, const message &m, command_completion_event_t callback);
+
+	/**
+	 * @brief Edit original followup message to a slash command
+	 * This is an alias for cluster::interaction_response_edit
+	 * @see cluster::interaction_response_edit
+	 * 
+	 * @param token Token for the interaction webhook
+	 * @param m message to edit, the ID should be set
+	 * @param callback Function to call when the API call completes.
+	 * On success the callback will contain a dpp::confirmation object in confirmation_callback_t::value. On failure, the value is undefined and confirmation_callback_t::is_error() method will return true. You can obtain full error details with confirmation_callback_t::get_error().
+	 */
+	void interaction_followup_edit_original(const std::string &token, const message &m, command_completion_event_t callback = utility::log_error());
+
+	/**
+	 * @brief 
+	 * 
+	 * @param token Token for the interaction webhook
+	 * @param callback Function to call when the API call completes.
+	 * On success the callback will contain a dpp::confirmation object in confirmation_callback_t::value. On failure, the value is undefined and confirmation_callback_t::is_error() method will return true. You can obtain full error details with confirmation_callback_t::get_error().
+	 */
+	void interaction_followup_delete(const std::string &token, command_completion_event_t callback = utility::log_error());
+
+	/**
+	 * @brief Edit followup message to a slash command
+	 * The message ID in the message you pass should be correctly set to that of a followup message you previously sent
+	 * @param token Token for the interaction webhook
+	 * @param m message to edit, the ID should be set
+	 * @param callback Function to call when the API call completes.
+	 * On success the callback will contain a dpp::confirmation object in confirmation_callback_t::value. On failure, the value is undefined and confirmation_callback_t::is_error() method will return true. You can obtain full error details with confirmation_callback_t::get_error().
+	 */
+	void interaction_followup_edit(const std::string &token, const message &m, command_completion_event_t callback = utility::log_error());
+
+	/**
+	 * @brief Get the followup message to a slash command
+	 * @param token Token for the interaction webhook
+	 * @param message_id message to retrieve
+	 * @param callback Function to call when the API call completes.
+	 * On success the callback will contain a dpp::message object in confirmation_callback_t::value. On failure, the value is undefined and confirmation_callback_t::is_error() method will return true. You can obtain full error details with confirmation_callback_t::get_error().
+	 */
+	void interaction_followup_get(const std::string &token, snowflake message_id, command_completion_event_t callback);
+
+	/**
 	 * @brief Create a global slash command (a bot can have a maximum of 100 of these).
 	 * 
-	 * @note Global commands are cached by discord server-side and can take up to an hour to be visible. For testing,
-	 * you should use cluster::guild_command_create instead.
-	 *
 	 * @see https://discord.com/developers/docs/interactions/application-commands#create-global-application-command
 	 * @param s Slash command to create
 	 * @param callback Function to call when the API call completes.
@@ -1577,9 +1651,6 @@ public:
 	 * @brief Create/overwrite global slash commands.
 	 * Any existing global slash commands will be deleted and replaced with these.
 	 *
-	 * @note Global commands are cached by discord server-side and can take up to an hour to be visible. For testing,
-	 * you should use cluster::guild_bulk_command_create instead.
-	 * 
 	 * @see https://discord.com/developers/docs/interactions/application-commands#bulk-overwrite-global-application-commands
 	 * @param commands Vector of slash commands to create/update.
 	 * overwriting existing commands that are registered globally for this application. Updates will be available in all guilds after 1 hour.
@@ -1593,8 +1664,6 @@ public:
 	 * @brief Edit a global slash command (a bot can have a maximum of 100 of these)
 	 *
 	 * @see https://discord.com/developers/docs/interactions/application-commands#edit-global-application-command
-	 * @note Global commands are cached by discord server-side and can take up to an hour to be visible. For testing,
-	 * you should use cluster::guild_bulk_command_create instead.
 	 * @param s Slash command to change
 	 * @param callback Function to call when the API call completes.
 	 * On success the callback will contain a dpp::confirmation object in confirmation_callback_t::value. On failure, the value is undefined and confirmation_callback_t::is_error() method will return true. You can obtain full error details with confirmation_callback_t::get_error().
