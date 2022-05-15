@@ -8,8 +8,15 @@
 
 namespace ping_h
 {
-	void ping()
+	void ping(const dpp::interaction_create_t& event, dpp::command_interaction commands)
 	{
-		// Under-construction
+		auto measure = static_cast<int>(event.from->websocket_ping * 1000);
+
+		dpp::message message;
+		message.set_flags(dpp::m_ephemeral);
+		std::string reply_ping = "The ping latecy is: " + std::to_string(measure) + " ms.";
+		message.set_content(reply_ping);
+
+		event.reply(dpp::ir_channel_message_with_source, message);
 	}
 }

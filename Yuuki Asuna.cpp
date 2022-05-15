@@ -23,23 +23,15 @@ int main()
 	// Token access
 	dpp::cluster client(token);
 
-	// Interaction create
+	// On interaction create
 	client.on_interaction_create([&client](const dpp::interaction_create_t& event) {
-		if (event.command.get_command_name() == "ping") {
-			event.reply("Pong!");
-		}
+		// Under-construction
 	});
 
 	// Bot ready
-	client.on_ready([&client, guild_id](const dpp::ready_t& event) {
+	client.on_ready([&client](const dpp::ready_t& event) {
 		fmt::print("Log in as {}.\n", client.me.format_username());
 		client.set_presence(dpp::presence(dpp::ps_dnd, dpp::at_watching, "Sword Art Online"));
-
-		// Guild command
-		client.guild_command_create(
-			dpp::slashcommand("ping", "Ping pong!", client.me.id),
-			guild_id
-		);
 	});
 	
 	// Starting the bot
