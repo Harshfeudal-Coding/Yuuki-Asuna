@@ -7,6 +7,9 @@
 #include <dpp/nlohmann/json.hpp>
 #include <dpp/fmt/core.h>
 
+// Project include
+#include "../commands/ping.h"
+
 using json = nlohmann::json;
 
 int main()

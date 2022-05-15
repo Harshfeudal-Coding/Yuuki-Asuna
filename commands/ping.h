@@ -13,8 +13,9 @@ namespace ping_h
 		auto measure = static_cast<int>(event.from->websocket_ping * 1000);
 
 		dpp::message message;
-		message.set_flags(dpp::m_ephemeral);
 		std::string reply_ping = "The ping latecy is: " + std::to_string(measure) + " ms.";
+
+		message.set_flags(dpp::m_ephemeral);
 		message.set_content(reply_ping);
 
 		event.reply(dpp::ir_channel_message_with_source, message);

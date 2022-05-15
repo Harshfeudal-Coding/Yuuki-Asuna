@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Yuuki Asuna.cpp">
+    <ClCompile Include="src\Yuuki Asuna.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -143,7 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Yuuki Asuna.cpp" />
+    <ClCompile Include="src\Yuuki Asuna.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitattributes" />
