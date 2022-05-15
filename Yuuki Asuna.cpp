@@ -18,7 +18,7 @@ int main()
 
 	// Constant
 	const auto &token = reader["token"];
-	const dpp::snowflake &guild_id = reader["guild_id"];
+	const auto &guild_id = reader["guild_id"];
 
 	// Token access
 	dpp::cluster client(token);
