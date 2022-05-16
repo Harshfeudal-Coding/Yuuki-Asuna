@@ -28,10 +28,19 @@ int main()
 
 	// Interaction create
 	client.on_interaction_create([&client](const dpp::interaction_create_t &event) {
-		/*
-			Under-construction ...
-			I'll use guild_bulk_command_create() instead of guild_command_create()
-		*/
+		if (event.command.type == dpp::it_application_command)
+		{
+			// Export command data
+			dpp::command_interaction command_data = std::get<dpp::command_interaction>(event.command.data);
+
+			// Slash command lists
+			if (command_data.name == "ping")
+			{
+				ping_command::ping(event, command_data);
+			};
+		}
+
+		// Under-construction
 	});
 
 	// Bot ready

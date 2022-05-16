@@ -7,9 +7,9 @@
 #include <dpp/dpp.h>
 #include <dpp/fmt/format.h>
 
-namespace ping_h
+namespace ping_command
 {
-	void ping(const dpp::interaction_create_t& event, dpp::command_interaction commands)
+	void ping(const dpp::interaction_create_t& event, dpp::command_interaction command)
 	{
 		// Measure the ping latecy
 		auto measure = static_cast<int>(event.from->websocket_ping * 1000);
