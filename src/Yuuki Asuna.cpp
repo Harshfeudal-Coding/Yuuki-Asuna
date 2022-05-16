@@ -26,13 +26,16 @@ int main()
 	// Token access
 	dpp::cluster client(token);
 
-	// On interaction create
-	client.on_interaction_create([&client](const dpp::interaction_create_t& event) {
-		// Under-construction
+	// Interaction create
+	client.on_interaction_create([&client](const dpp::interaction_create_t &event) {
+		/*
+			Under-construction ...
+			I'll use guild_bulk_command_create() instead of guild_command_create()
+		*/
 	});
 
 	// Bot ready
-	client.on_ready([&client](const dpp::ready_t& event) {
+	client.on_ready([&client](const dpp::ready_t &event) {
 		fmt::print("Log in as {}.\n", client.me.format_username());
 		client.set_presence(dpp::presence(dpp::ps_dnd, dpp::at_watching, "Sword Art Online"));
 	});
