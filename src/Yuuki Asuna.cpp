@@ -34,13 +34,18 @@ int main()
 			dpp::command_interaction command_data = std::get<dpp::command_interaction>(event.command.data);
 
 			// Slash command lists
-			if (command_data.name == "ping")
-			{
-				ping_command::ping(event, command_data);
-			};
+			if (command_data.name == "ping") ping_command::ping(event, command_data);
+
+			// Guild command create
+			/*
+				I need to change sth here: (Error here)
+			client.guild_bulk_command_create();
+			*/
 		}
 
-		// Under-construction
+		/*
+			I'll add guild_bulk_command_create()
+		*/
 	});
 
 	// Bot ready
