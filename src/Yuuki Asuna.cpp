@@ -35,18 +35,18 @@ int main()
 
 			// Slash command lists
 			if (command_data.name == "ping") ping_command::ping(event, command_data);
-
-			// Guild command create
-			/*
-				I need to change sth here: (Error here)
-			client.guild_bulk_command_create();
-			*/
 		}
-
-		/*
-			I'll add guild_bulk_command_create()
-		*/
 	});
+
+	// Guild command
+	client.guild_commands_get(guild_id, [&client, &guild_id](const dpp::confirmation_callback_t& callback) {
+		if (!callback.is_error()) {
+			auto command_map = std::get<dpp::slashcommand_map>(callback.value);
+			for (auto& [name, command] : command_map) {
+				client.guild_command_delete(name, guild_id);
+			}
+		}
+		});
 
 	// Bot ready
 	client.on_ready([&client](const dpp::ready_t &event) {

@@ -9,7 +9,7 @@
 
 namespace ping_command
 {
-	void ping(const dpp::interaction_create_t& event, dpp::command_interaction command)
+	void ping(const dpp::interaction_create_t &event, dpp::command_interaction command)
 	{
 		// Measure the ping latecy
 		auto measure = static_cast<int>(event.from->websocket_ping * 1000);
