@@ -1,4 +1,4 @@
-# Yuuki-Asuna
+# Yuuki Asuna Discord Bot
  The C++ Discord bot, developed by Harshfeudal#0001. <br /> <br />
  __Note:__ 
 - Yuuki Asuna#8388 avatar was collected from the Internet. If it’s your art the please DM me on Discord for imagine source.
