@@ -33,7 +33,7 @@
  * @see dpp::cluster::global_bulk_command_create
  * @see https://discord.com/developers/docs/interactions/application-commands#bulk-overwrite-global-application-commands
  * @param commands Vector of slash commands to create/update.
- * overwriting existing commands that are registered globally for this application.
+ * overwriting existing commands that are registered globally for this application. Updates will be available in all guilds after 1 hour.
  * Commands that do not already exist will count toward daily application command create limits.
  * @return slashcommand_map returned object on completion
  * \memberof dpp::cluster
@@ -154,6 +154,7 @@ guild_command_permissions_map guild_commands_get_permissions_sync(snowflake guil
  * @param commands A vector of slash commands to edit/overwrite the permissions for
  * @param guild_id Guild ID to edit permissions of the slash commands in
  * @return guild_command_permissions_map returned object on completion
+ * @deprecated This has been disabled with updates to Permissions v2. You can use guild_command_edit_permissions instead
  * \memberof dpp::cluster
  * @throw dpp::rest_exception upon failure to execute REST function
  * @warning This function is a blocking (synchronous) call and should only be used from within a separate thread.
@@ -1190,12 +1191,32 @@ confirmation guild_member_timeout_sync(snowflake guild_id, snowflake user_id, ti
  * @param user_id User ID to remove role from
  * @param role_id Role to remove
  * @return confirmation returned object on completion
+ * @deprecated Use dpp::cluster::guild_member_remove_role instead
  * \memberof dpp::cluster
  * @throw dpp::rest_exception upon failure to execute REST function
  * @warning This function is a blocking (synchronous) call and should only be used from within a separate thread.
  * Avoid direct use of this function inside an event handler.
  */
 confirmation guild_member_delete_role_sync(snowflake guild_id, snowflake user_id, snowflake role_id);
+
+/**
+ * @brief Remove role from guild member
+ *
+ * Removes a role from a guild member. Requires the `MANAGE_ROLES` permission.
+ * Fires a `Guild Member Update` Gateway event.
+ * @see dpp::cluster::guild_member_remove_role
+ * @see https://discord.com/developers/docs/resources/guild#remove-guild-member-role
+ * @note This method supports audit log reasons set by the cluster::set_audit_reason() method.
+ * @param guild_id Guild ID to remove role from user on
+ * @param user_id User ID to remove role from
+ * @param role_id Role to remove
+ * @return confirmation returned object on completion
+ * \memberof dpp::cluster
+ * @throw dpp::rest_exception upon failure to execute REST function
+ * @warning This function is a blocking (synchronous) call and should only be used from within a separate thread.
+ * Avoid direct use of this function inside an event handler.
+ */
+confirmation guild_member_remove_role_sync(snowflake guild_id, snowflake user_id, snowflake role_id);
 
 /**
  * @brief Moves the guild member to a other voice channel, if member is connected to one
@@ -2201,13 +2222,14 @@ confirmation delete_webhook_sync(snowflake webhook_id);
  * @see https://discord.com/developers/docs/resources/webhook#delete-webhook-message
  * @param wh Webhook to delete message for
  * @param message_id Message ID to delete
+ * @param thread_id ID of the thread the message is in
  * @return confirmation returned object on completion
  * \memberof dpp::cluster
  * @throw dpp::rest_exception upon failure to execute REST function
  * @warning This function is a blocking (synchronous) call and should only be used from within a separate thread.
  * Avoid direct use of this function inside an event handler.
  */
-confirmation delete_webhook_message_sync(const class webhook &wh, snowflake message_id);
+confirmation delete_webhook_message_sync(const class webhook &wh, snowflake message_id, snowflake thread_id = 0);
 
 /**
  * @brief Delete webhook with token
@@ -2250,13 +2272,14 @@ webhook edit_webhook_sync(const class webhook& wh);
  * @note the attachments array must contain all attachments that should be present after edit, including retained and new attachments provided in the request body.
  * @param wh Webhook to edit message for
  * @param m New message
+ * @param thread_id ID of the thread the message is in
  * @return message returned object on completion
  * \memberof dpp::cluster
  * @throw dpp::rest_exception upon failure to execute REST function
  * @warning This function is a blocking (synchronous) call and should only be used from within a separate thread.
  * Avoid direct use of this function inside an event handler.
  */
-message edit_webhook_message_sync(const class webhook &wh, const struct message &m);
+message edit_webhook_message_sync(const class webhook &wh, const struct message &m, snowflake thread_id = 0);
 
 /**
  * @brief Edit webhook with token (token is encapsulated in the webhook object)
@@ -2333,13 +2356,15 @@ webhook get_webhook_sync(snowflake webhook_id);
  * @see dpp::cluster::get_webhook_message
  * @see https://discord.com/developers/docs/resources/webhook#get-webhook-message
  * @param wh Webhook to get the original message for
+ * @param message_id The message ID
+ * @param thread_id ID of the thread the message is in
  * @return message returned object on completion
  * \memberof dpp::cluster
  * @throw dpp::rest_exception upon failure to execute REST function
  * @warning This function is a blocking (synchronous) call and should only be used from within a separate thread.
  * Avoid direct use of this function inside an event handler.
  */
-message get_webhook_message_sync(const class webhook &wh);
+message get_webhook_message_sync(const class webhook &wh, snowflake message_id, snowflake thread_id = 0);
 
 /**
  * @brief Get webhook using token

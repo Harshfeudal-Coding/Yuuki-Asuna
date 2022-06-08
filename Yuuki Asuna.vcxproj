@@ -143,16 +143,93 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Yuuki Asuna.cpp" />
+    <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitattributes" />
     <None Include=".gitignore" />
     <None Include="config.json" />
+    <None Include="include\dpp-lib-10.0\dpp-config-version.cmake" />
+    <None Include="include\dpp-lib-10.0\dpp-release.cmake" />
+    <None Include="include\dpp-lib-10.0\dpp.cmake" />
+    <None Include="include\dpp-lib-10.0\libdpp-config.cmake" />
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="commands\ping.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\appcommand.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\application.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\auditlog.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\ban.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\cache.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\channel.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\cluster.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\cluster_sync_calls.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\colors.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\commandhandler.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\discordclient.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\discordevents.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\discordvoiceclient.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\dispatcher.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\dpp.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\dtemplate.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\emoji.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\etf.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\event.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\exception.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\export.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\fmt-minimal.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\fmt\args.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\fmt\chrono.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\fmt\color.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\fmt\compile.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\fmt\core.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\fmt\format-inl.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\fmt\format.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\fmt\locale.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\fmt\os.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\fmt\ostream.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\fmt\printf.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\fmt\ranges.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\fmt\xchar.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\guild.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\httpsclient.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\integration.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\intents.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\invite.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\json_interface.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\managed.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\message.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\misc-enum.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\nlohmann\json.hpp" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\nlohmann\json_fwd.hpp" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\once.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\permissions.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\presence.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\prune.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\queues.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\restrequest.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\role.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\scheduled_event.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\snowflake.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\socket.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\sslclient.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\stage_instance.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\stringops.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\sync.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\sysdep.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\timer.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\user.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\utility.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\version.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\voiceregion.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\voicestate.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\webhook.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\win32_safe_warnings.h" />
+    <ClInclude Include="include\dpp-include-10.0\dpp\wsclient.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="include\dpp-lib-10.0\dpp.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
