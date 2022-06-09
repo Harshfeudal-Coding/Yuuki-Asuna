@@ -16,7 +16,7 @@ int main()
 {
 	// Reading JSON file
 	json reader;
-	std::ifstream reading("./config.json", std::ifstream::binary);
+	std::ifstream reading("../config.json", std::ifstream::binary);
 	reading >> reader;
 	reading.close();
 
@@ -27,12 +27,7 @@ int main()
 	// Token access
 	dpp::cluster client(token);
 
-	// Bot ready
-	client.on_ready([&client](const dpp::ready_t& event) {
-		fmt::print("Log in as {}.\n", client.me.format_username());
-		client.set_presence(dpp::presence(dpp::ps_dnd, dpp::at_watching, "Sword Art Online"));
-		});
-
+	/*
 	// Make commands
 	std::vector<dpp::slashcommand> commands
 	{
@@ -46,12 +41,21 @@ int main()
 			.set_description("Onli say hi")
 			.set_application_id(client.me.id),
 	};
+	*/
 
-	// Guild command create
-	client.guild_bulk_command_create(commands, guild_id);
+	// Bot ready
+	client.on_ready([&client](const dpp::ready_t& event) {
+		fmt::print("Log in as {}.\n", client.me.format_username());
+		client.set_presence(dpp::presence(dpp::ps_dnd, dpp::at_watching, "Sword Art Online"));
+
+		// Guild command create
+		/*
+		client.guild_bulk_command_create(commands, guild_id);
+		*/
+		dpp::utility::log_error();
+		});
 	
 	// Starting the bot
 	client.start(false);
-	dpp::utility::log_error();
 	return 0;
 }
