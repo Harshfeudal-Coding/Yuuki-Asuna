@@ -20,7 +20,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="config.json" />
     <None Include=".gitattributes" />
     <None Include=".gitignore" />
     <None Include="README.md" />
@@ -28,6 +27,12 @@
     <None Include="include\dpp-lib-10.0\dpp-config-version.cmake" />
     <None Include="include\dpp-lib-10.0\dpp-release.cmake" />
     <None Include="include\dpp-lib-10.0\libdpp-config.cmake" />
+    <None Include="x64\Release\vc143.pdb" />
+    <None Include="x64\Release\Yuuki Asuna.exe.recipe" />
+    <None Include="x64\Release\Yuuki Asuna.iobj" />
+    <None Include="x64\Release\Yuuki Asuna.ipdb" />
+    <None Include="src\config.json" />
+    <None Include="config.json" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\dpp-include-10.0\dpp\appcommand.h">
@@ -246,5 +251,13 @@
   </ItemGroup>
   <ItemGroup>
     <Library Include="include\dpp-lib-10.0\dpp.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="x64\Release\main.obj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="x64\Release\Yuuki Asuna.Build.CppClean.log" />
+    <Text Include="x64\Release\Yuuki Asuna.log" />
+    <Text Include="x64\Release\Yuuki Asuna.vcxproj.FileListAbsolute.txt" />
   </ItemGroup>
 </Project>
