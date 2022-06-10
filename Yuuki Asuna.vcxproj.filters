@@ -32,6 +32,10 @@
     <None Include="x64\Release\Yuuki Asuna.iobj" />
     <None Include="x64\Release\Yuuki Asuna.ipdb" />
     <None Include="src\config.json" />
+    <None Include=".github\config.yml" />
+    <None Include=".github\ISSUE_TEMPLATE\bug_report.yml" />
+    <None Include=".github\ISSUE_TEMPLATE\custom.md" />
+    <None Include=".github\ISSUE_TEMPLATE\feature_request.md" />
     <None Include="config.json" />
   </ItemGroup>
   <ItemGroup>

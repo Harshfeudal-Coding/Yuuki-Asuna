@@ -147,6 +147,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitattributes" />
+    <None Include=".github\config.yml" />
+    <None Include=".github\ISSUE_TEMPLATE\bug_report.yml" />
+    <None Include=".github\ISSUE_TEMPLATE\custom.md" />
+    <None Include=".github\ISSUE_TEMPLATE\feature_request.md" />
     <None Include=".gitignore" />
     <None Include="config.json" />
     <None Include="include\dpp-lib-10.0\dpp-config-version.cmake" />
