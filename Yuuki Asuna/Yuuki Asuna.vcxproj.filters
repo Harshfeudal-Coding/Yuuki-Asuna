@@ -252,6 +252,9 @@
     <ClInclude Include="commands\ping.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="commands\handler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Library Include="include\dpp-lib-10.0\dpp.lib" />

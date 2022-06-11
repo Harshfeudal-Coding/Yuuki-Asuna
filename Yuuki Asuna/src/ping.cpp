@@ -4,7 +4,7 @@
 // Dpp include
 #include <dpp/fmt/format.h>
 
-void ping(dpp::cluster& client, const dpp::slashcommand_t& event, dpp::command_interaction cmd_data)
+void ping(dpp::cluster& client, const dpp::slashcommand_t& event)
 {
 	// Make a ping variable
 	double ws_ping = client.get_shard(0)->websocket_ping;

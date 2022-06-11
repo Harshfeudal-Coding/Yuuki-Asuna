@@ -163,6 +163,7 @@
     <None Include="x64\Release\Yuuki Asuna.ipdb" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="commands\handler.h" />
     <ClInclude Include="include\dpp-include-10.0\dpp\appcommand.h" />
     <ClInclude Include="include\dpp-include-10.0\dpp\application.h" />
     <ClInclude Include="include\dpp-include-10.0\dpp\auditlog.h" />
