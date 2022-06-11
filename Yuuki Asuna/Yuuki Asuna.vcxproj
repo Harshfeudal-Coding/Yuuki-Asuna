@@ -143,22 +143,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="commands\ping.cpp" />
+    <ClCompile Include="src\ping.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include=".gitattributes" />
     <None Include=".github\config.yml" />
     <None Include=".github\ISSUE_TEMPLATE\bug_report.yml" />
     <None Include=".github\ISSUE_TEMPLATE\custom.md" />
     <None Include=".github\ISSUE_TEMPLATE\feature_request.md" />
-    <None Include=".gitignore" />
     <None Include="config.json" />
     <None Include="include\dpp-lib-10.0\dpp-config-version.cmake" />
     <None Include="include\dpp-lib-10.0\dpp-release.cmake" />
     <None Include="include\dpp-lib-10.0\dpp.cmake" />
     <None Include="include\dpp-lib-10.0\libdpp-config.cmake" />
-    <None Include="README.md" />
     <None Include="src\config.json" />
     <None Include="x64\Release\vc143.pdb" />
     <None Include="x64\Release\Yuuki Asuna.exe.recipe" />
@@ -236,7 +233,9 @@
     <ClInclude Include="include\dpp-include-10.0\dpp\webhook.h" />
     <ClInclude Include="include\dpp-include-10.0\dpp\win32_safe_warnings.h" />
     <ClInclude Include="include\dpp-include-10.0\dpp\wsclient.h" />
-    <ClInclude Include="commands\headers\ping.h" />
+    <ClInclude Include="commands\ping.h">
+      <DeploymentContent>true</DeploymentContent>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Library Include="include\dpp-lib-10.0\dpp.lib" />
