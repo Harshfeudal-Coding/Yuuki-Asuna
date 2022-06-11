@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="commands\ping.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -165,7 +166,6 @@
     <None Include="x64\Release\Yuuki Asuna.ipdb" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="commands\ping.h" />
     <ClInclude Include="include\dpp-include-10.0\dpp\appcommand.h" />
     <ClInclude Include="include\dpp-include-10.0\dpp\application.h" />
     <ClInclude Include="include\dpp-include-10.0\dpp\auditlog.h" />
@@ -236,6 +236,7 @@
     <ClInclude Include="include\dpp-include-10.0\dpp\webhook.h" />
     <ClInclude Include="include\dpp-include-10.0\dpp\win32_safe_warnings.h" />
     <ClInclude Include="include\dpp-include-10.0\dpp\wsclient.h" />
+    <ClInclude Include="commands\headers\ping.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="include\dpp-lib-10.0\dpp.lib" />
