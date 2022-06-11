@@ -1,7 +1,7 @@
 # Yuuki Asuna Discord Bot
- The C++ Discord bot, developed by Harshfeudal#0001. <br /> <br />
+ The C++ Discord bot, developed by Harshfeudal#0001. <br />
  
- __Note:__ 
+ **Note:**
 - Yuuki Asuna#8388 avatar was collected from the Internet. If it’s your art the please DM me on Discord for imagine source.
 - This respiratory is developed using Visual Studio 2022, `x64` and `Release` version. 
 - If you want to use it, just download it and open the `.sln` file.
