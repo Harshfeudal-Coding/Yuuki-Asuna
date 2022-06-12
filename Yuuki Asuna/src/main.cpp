@@ -20,7 +20,7 @@ std::map<std::string, cmd_def> commands
 {
 	// Inspired JSON style
 	{
-		"Ping", { "Check bot latecy", ping }
+		"Ping", { "Check Asuna latecy", ping }
 	}
 };
 
@@ -36,6 +36,7 @@ int main()
 
 	// Constant variables
 	const std::string token = reader["token"];
+	const dpp::snowflake guild_id = reader["guild_id"];
 
 	// Bot access
 	dpp::cluster client(token);
@@ -43,7 +44,7 @@ int main()
 	/* ------------ After here, we can use client ------------ */
 
 	// Bot ready
-	client.on_ready([&client, &reader](const dpp::ready_t& event) {
+	client.on_ready([&client, guild_id](const dpp::ready_t& event) {
 		fmt::print("Log in as {}.\n", client.me.format_username());
 		client.set_presence(dpp::presence(dpp::ps_dnd, dpp::at_watching, "Sword Art Online"));
 
@@ -83,7 +84,7 @@ int main()
 			// Guild slash command create
 			client.guild_bulk_command_create(
 				slash_cmds,
-				reader["guild_id"].get<dpp::snowflake>()
+				guild_id
 				// dpp::utility::log_error()	// This is custom, if you want to put it
 			);
 		}

@@ -1,4 +1,6 @@
+
 // Project include
+#include "../commands/handler.h"
 #include "../commands/ping.h"
 
 // Dpp include
