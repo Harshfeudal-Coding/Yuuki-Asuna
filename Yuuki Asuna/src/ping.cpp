@@ -22,4 +22,7 @@ void ping(dpp::cluster& client, const dpp::slashcommand_t& event)
 		.set_flags(dpp::m_ephemeral)
 		.set_content(message_content)
 	);
+
+	// Check if the ping works
+	fmt::print("[running] ping command replied\n");
 }
