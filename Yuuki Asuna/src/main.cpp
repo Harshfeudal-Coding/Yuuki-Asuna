@@ -37,6 +37,7 @@ int main()
 	// Constant variables
 	const std::string token = reader["token"];
 	const dpp::snowflake guild_id = reader["guild_id"];
+	const dpp::snowflake client_id = reader["client_id"];
 
 	// Bot access
 	dpp::cluster client(token);
@@ -44,7 +45,7 @@ int main()
 	/* ------------ After here, we can use client ------------ */
 
 	// Bot ready
-	client.on_ready([&client, guild_id](const dpp::ready_t& event) {
+	client.on_ready([&client, guild_id, client_id](const dpp::ready_t& event) {
 		fmt::print("Log in as {}.\n", client.me.format_username());
 		client.set_presence(dpp::presence(dpp::ps_dnd, dpp::at_watching, "Sword Art Online"));
 
@@ -69,9 +70,9 @@ int main()
 				dpp::slashcommand cmd;
 
 				// Slash commands template
-				cmd.set_name(def.first).
-					set_description(def.second.des).
-					set_application_id(client.me.id);
+				cmd.set_name(def.first)
+					.set_description(def.second.des)
+					.set_application_id(client_id);
 
 				// Option if added
 				cmd.options = def.second.param;
@@ -80,12 +81,11 @@ int main()
 				slash_cmds.push_back(cmd);
 			}
 
-
 			// Guild slash command create
 			client.guild_bulk_command_create(
 				slash_cmds,
-				guild_id
-				// dpp::utility::log_error()	// This is custom, if you want to put it
+				guild_id,
+				dpp::utility::log_error()	// This is custom, if you want to put it
 			);
 		}
 		});

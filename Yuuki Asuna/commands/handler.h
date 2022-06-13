@@ -7,7 +7,7 @@
 #include <dpp/dpp.h>
 
 // Using shorten
-using function = std::function<void(dpp::cluster&, const dpp::slashcommand_t& event)>;
+using cmd_function = std::function<void(dpp::cluster&, const dpp::slashcommand_t& event)>;
 
 // Make a command definition
 struct cmd_def
@@ -16,8 +16,8 @@ struct cmd_def
 	std::string des;
 
 	// Slash command function
-	function func;
+	cmd_function func;
 
 	// Slash command parameter
-	std::vector<dpp::command_option> param{};
+	std::vector<dpp::command_option> param = {};
 };
