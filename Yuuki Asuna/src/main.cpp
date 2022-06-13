@@ -52,8 +52,8 @@ int main()
 		/*
 			Please note:
 				- The slash commands are under-construction!
-				- If you want to use it in Visual Studio, make a new file called `config.json`
-				- Place your token and guild ID in there, at the same directory of `.gitignore`
+				- If you want to use it in Visual Studio, make a new file called `config.json`.
+				- Place your token and guild ID in there, at the same directory of `.gitignore`.
 				- The on_slashcommand in somehow it still doesn't work in the guild, please wait until I solve it.
 
 			Thanks!
@@ -63,7 +63,11 @@ int main()
 		{
 			std::vector<dpp::slashcommand> slash_cmds;
 
-			// Setup a simple template for all commands
+			/*
+				- This is the setup of the commands.
+				- If you want to delete it, guild or global command(s),
+				you just put the note here so that it will pass blank vector.
+			*/
 			for (auto& def : commands)
 			{
 				// Make slash commands
@@ -81,12 +85,16 @@ int main()
 				slash_cmds.push_back(cmd);
 			}
 
+			
 			// Guild slash command create
 			client.guild_bulk_command_create(
 				slash_cmds,
 				guild_id,
 				dpp::utility::log_error()	// This is custom, if you want to put it
 			);
+
+			// Global slash command create
+			// client.global_bulk_command_create(slash_cmds);
 		}
 		});
 
