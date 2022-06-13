@@ -116,6 +116,18 @@ int main()
 	// Console log (if you don't want to log, just do the note like me)
 	// client.on_log(dpp::utility::cout_logger());
 
+	// Test if the handler file works
+	std::ifstream checkfile;
+	checkfile.open("../commands/handler.h");
+	if ( checkfile )
+	{
+		fmt::print("[running] handler.h\n");
+	}
+	else
+	{
+		fmt::print("[broken] handler.h is broken\n");
+	}
+
 	// Bot start
 	client.start(false);
 	return 0;
