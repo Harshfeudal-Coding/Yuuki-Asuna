@@ -18,3 +18,5 @@
 
 ### Special thanks
 I’d glad to thanks [Dpp Discord Server](https://discord.gg/dpp) and everyone in there for helping me in making this bot. Without them, the bot may not be well-developed and result a crash. 
+
+I'd also thanks [Eremiell](https://discord.com/users/340661564556312591) for helping me a lot in finding error. Without you, the project may be terminated.
