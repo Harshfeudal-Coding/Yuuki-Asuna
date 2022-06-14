@@ -5,10 +5,7 @@
 // Dpp include
 #include <dpp/fmt/format.h>
 
-// Get username (haven't done)
-dpp::user user;
-
-void ping(dpp::cluster& client, const dpp::slashcommand_t& event)
+void ping_h(dpp::cluster& client, const dpp::slashcommand_t& event)
 {
 	// Make a ping variable
 	double ws_ping = client.get_shard(0)->websocket_ping;
@@ -29,6 +26,6 @@ void ping(dpp::cluster& client, const dpp::slashcommand_t& event)
 	// Interaction reply check
 	fmt::print(
 		"[running] ping command replied from {}\n", 
-		user.username
+		event.command.usr.format_username()
 	);
 }

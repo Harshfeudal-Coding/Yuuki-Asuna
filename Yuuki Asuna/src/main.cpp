@@ -6,6 +6,7 @@
 // Project include
 #include "../commands/handler.h"
 #include "../commands/ping.h"
+#include "../commands/kick.h"
 
 // Dpp include
 #include <dpp/dpp.h>
@@ -20,7 +21,10 @@ std::map<std::string, cmd_def> commands
 {
 	// Inspired JSON style, remember the name is lowercase
 	{
-		"ping", { "Check Asuna latecy", ping }
+		"ping", { "Check Asuna latecy", ping_h }
+	},
+	{
+		"kick", { "Asuna will kick a member you mentioned", kick_h }
 	}
 };
 
