@@ -18,9 +18,9 @@ using json = nlohmann::json;
 // Building slash commands
 std::map<std::string, cmd_def> commands
 {
-	// Inspired JSON style
+	// Inspired JSON style, remember the name is lowercase
 	{
-		"Ping", { "Check Asuna latecy", ping }
+		"ping", { "Check Asuna latecy", ping }
 	}
 };
 
@@ -54,7 +54,7 @@ int main()
 				- The slash commands are under-construction!
 				- If you want to use it in Visual Studio, make a new file called `config.json`.
 				- Place your token and guild ID in there, at the same directory of `.gitignore`.
-				- The on_slashcommand in somehow it still doesn't work in the guild, please wait until I solve it.
+				- I confirmed it works ayyy :>
 
 			Thanks!
 		*/
@@ -74,7 +74,8 @@ int main()
 				dpp::slashcommand cmd;
 
 				// Slash commands template
-				cmd.set_name(def.first)
+				cmd
+					.set_name(def.first)
 					.set_description(def.second.des)
 					.set_application_id(client_id);
 

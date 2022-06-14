@@ -5,6 +5,9 @@
 // Dpp include
 #include <dpp/fmt/format.h>
 
+// Get username (haven't done)
+dpp::user user;
+
 void ping(dpp::cluster& client, const dpp::slashcommand_t& event)
 {
 	// Make a ping variable
@@ -23,6 +26,9 @@ void ping(dpp::cluster& client, const dpp::slashcommand_t& event)
 		.set_content(message_content)
 	);
 
-	// Check if the ping works
-	fmt::print("[running] ping command replied\n");
+	// Interaction reply check
+	fmt::print(
+		"[running] ping command replied from {}\n", 
+		user.username
+	);
 }
