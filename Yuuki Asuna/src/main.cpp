@@ -24,7 +24,13 @@ std::map<std::string, cmd_def> commands
 		"ping", { "Check Asuna latecy", ping_h }
 	},
 	{
-		"kick", { "Asuna will kick a member you mentioned", kick_h }
+		"kick", 
+			{ 
+				"Asuna will kick a member you mentioned", kick_h,
+				{
+					dpp::command_option(dpp::co_mentionable, "member", "Mention a member to kick", true)
+				}
+			}
 	}
 };
 
