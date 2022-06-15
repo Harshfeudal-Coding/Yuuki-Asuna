@@ -28,7 +28,8 @@ std::map<std::string, cmd_def> commands
 			{ 
 				"Asuna will kick a member you mentioned", kick_h,
 				{
-					dpp::command_option(dpp::co_mentionable, "member", "Mention a member to kick", true)
+					dpp::command_option(dpp::co_mentionable, "member", "Mention a member to kick", true),
+					dpp::command_option(dpp::co_string, "reason", "Reason why they got kick", false)
 				}
 			}
 	}
