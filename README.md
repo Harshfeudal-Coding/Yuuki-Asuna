@@ -1,5 +1,5 @@
 # Yuuki Asuna Discord Bot
- The C++ Discord bot, developed by Harshfeudal#0001. <br />
+ The C++ Discord bot, developed by Harshfeudal. <br />
  This project is developed based on the Discord C++ API library, Dpp. You can visit it at [here](https://dpp.dev/).
  
  **Note:**
